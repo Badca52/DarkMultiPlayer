@@ -565,7 +565,8 @@ namespace DarkMultiPlayer
                     }
                     else
                     {
-                        Thread.Sleep(10);
+                        Disconnect("Connection closed");
+                        return;
                     }
                     if (receiveMessageBytesLeft == 0)
                     {

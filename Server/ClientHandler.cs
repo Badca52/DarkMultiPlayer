@@ -389,6 +389,12 @@ namespace DarkMultiPlayerServer
                 HandleDisconnectException("ReceiveCallback", client, e);
                 return;
             }
+            if (bytesRead == 0)
+            {
+                DarkLog.Normal ("Disconnected " + client.endpoint);
+                DisconnectClient (client);
+                return;
+            }
             client.bytesReceived += bytesRead;
             client.receiveMessageBytesLeft -= bytesRead;
             if (client.receiveMessageBytesLeft == 0)
