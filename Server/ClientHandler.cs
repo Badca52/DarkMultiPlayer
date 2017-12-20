@@ -391,8 +391,8 @@ namespace DarkMultiPlayerServer
             }
             if (bytesRead == 0)
             {
-                DarkLog.Normal ("Disconnected " + client.endpoint);
-                DisconnectClient (client);
+                DarkLog.Normal("Disconnected " + client.endpoint);
+                DisconnectClient(client);
                 return;
             }
             client.bytesReceived += bytesRead;
