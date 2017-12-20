@@ -148,6 +148,7 @@ namespace DarkMultiPlayerServer
             newClientObject.ipAddress = (newClientConnection.Client.RemoteEndPoint as IPEndPoint).Address;
             //Keep the connection reference
             newClientObject.connection = newClientConnection;
+            newClientObject.connection.NoDelay = true;
             StartReceivingIncomingMessages(newClientObject);
             StartSendingOutgoingMessages(newClientObject);
             DMPPluginHandler.FireOnClientConnect(newClientObject);

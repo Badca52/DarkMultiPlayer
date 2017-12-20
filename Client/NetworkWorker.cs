@@ -1466,6 +1466,12 @@ namespace DarkMultiPlayer
                 {
                     update.orbit = mr.Read<double[]>();
                 }
+                update.sasEnabled = mr.Read<bool>();
+                if (update.sasEnabled)
+                {
+                    update.autopilotMode = mr.Read<int>();
+                    update.lockedRotation = mr.Read<float[]>();
+                }
                 vesselWorker.QueueVesselUpdate(update);
             }
         }
@@ -1984,6 +1990,12 @@ namespace DarkMultiPlayer
                 else
                 {
                     mw.Write<double[]>(update.orbit);
+                }
+                mw.Write<bool>(update.sasEnabled);
+                if (update.sasEnabled)
+                {
+                    mw.Write<int>(update.autopilotMode);
+                    mw.Write<float[]>(update.lockedRotation);
                 }
                 newMessage.data = mw.GetMessageBytes();
             }
